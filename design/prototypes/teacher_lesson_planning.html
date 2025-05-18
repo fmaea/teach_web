@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线备课 - 智慧助教平台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { /* From Design Spec */ slate: { 900: '#1e293b', 800: '#2d3748', 700: '#374151', 600: '#4b5563', 100: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 200:'#e2e8f0' }, blue: { 400: '#60a5fa', 300: '#93c5fd', 600: '#2563eb', 700: '#1d4ed8', 500: '#3b82f6' }, green: { 500: '#22c55e', 600: '#16a34a'}, yellow: {500: '#eab308'}, red: {500: '#ef4444'} }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Styles for pseudo rich text editor controls */
+        .rich-text-controls button {
+            @apply p-2 bg-slate-600 hover:bg-slate-500 text-slate-200 rounded-md text-xs;
+        }
+        .rich-text-controls button.active {
+            @apply bg-blue-600 text-white;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+
+    <div class="flex h-screen">
+        <aside class="w-64 bg-slate-800 p-6 space-y-6 border-r border-slate-700 flex flex-col justify-between">
+            <div>
+                <div class="text-center mb-10">
+                     <div class="inline-block p-3 bg-blue-600 rounded-full mb-2">
+                        <i class="fas fa-seedling fa-2x text-white"></i>
+                    </div>
+                    <h1 class="text-xl font-semibold text-white">智慧助教平台</h1>
+                    <span class="text-xs text-slate-400">教师端</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="teacher_dashboard.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tachometer-alt fa-fw"></i>
+                        <span>仪表盘</span>
+                    </a>
+                    <a href="teacher_resource_management.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-book fa-fw"></i>
+                        <span>教学资源</span>
+                    </a>
+                    <a href="teacher_lesson_planning.html" class="flex items-center space-x-3 px-4 py-2.5 bg-blue-600 text-white rounded-lg shadow-md">
+                        <i class="fas fa-edit fa-fw"></i>
+                        <span>在线备课</span>
+                    </a>
+                    <a href="teacher_assignment_creation.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tasks fa-fw"></i>
+                        <span>作业管理</span>
+                    </a>
+                     <a href="teacher_assignment_grading.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-marker fa-fw"></i>
+                        <span>作业批阅</span>
+                    </a>
+                    <a href="teacher_student_progress_overview.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-chart-line fa-fw"></i>
+                        <span>学情分析</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-bullhorn fa-fw"></i>
+                        <span>通知公告</span>
+                    </a>
+                     <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-comments fa-fw"></i>
+                        <span>课堂互动</span>
+                         <span class="text-xs bg-yellow-500 text-slate-900 px-1.5 py-0.5 rounded-full">V1.1</span>
+                    </a>
+                </nav>
+            </div>
+             <div class="space-y-2 border-t border-slate-700 pt-6">
+                 <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-cog fa-fw"></i>
+                    <span>设置</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt fa-fw"></i>
+                    <span>退出登录</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto bg-slate-900 flex">
+            <div class="w-1/3 lg:w-1/4 bg-slate-800 rounded-l-lg shadow-lg p-6 border-r border-slate-700 flex flex-col">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-white">我的教案</h3>
+                    <button id="createNewLessonPlan" class="p-2 text-blue-400 hover:text-blue-300" title="创建新教案">
+                        <i class="fas fa-plus-circle fa-lg"></i>
+                    </button>
+                </div>
+                <div class="relative mb-4">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-slate-500"></i>
+                    </div>
+                    <input type="text" placeholder="搜索教案..." class="w-full pl-10 pr-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                </div>
+                <div class="space-y-3 overflow-y-auto flex-grow">
+                    <div class="p-3 bg-blue-600 rounded-md shadow cursor-pointer">
+                        <h4 class="font-semibold text-white text-sm truncate" title="第3章：土壤重金属污染与监测方法">第3章：土壤重金属污染与监测方法</h4>
+                        <p class="text-xs text-blue-200">更新于: 2025-05-15 <span class="ml-2 px-1.5 py-0.5 bg-green-500 text-white rounded-full text-xs">已发布</span></p>
+                    </div>
+                    <div class="p-3 bg-slate-700 hover:bg-slate-600 rounded-md shadow cursor-pointer">
+                        <h4 class="font-semibold text-slate-200 text-sm truncate" title="第4章：生活垃圾分类与资源化利用">第4章：生活垃圾分类与资源化利用</h4>
+                        <p class="text-xs text-slate-400">更新于: 2025-05-10 <span class="ml-2 px-1.5 py-0.5 bg-yellow-500 text-slate-900 rounded-full text-xs">草稿</span></p>
+                    </div>
+                    <div class="p-3 bg-slate-700 hover:bg-slate-600 rounded-md shadow cursor-pointer">
+                        <h4 class="font-semibold text-slate-200 text-sm truncate" title="实验课：土壤pH值测定规范">实验课：土壤pH值测定规范</h4>
+                        <p class="text-xs text-slate-400">更新于: 2025-04-28 <span class="ml-2 px-1.5 py-0.5 bg-green-500 text-white rounded-full text-xs">已发布</span></p>
+                    </div>
+                    <div class="p-3 bg-slate-700 hover:bg-slate-600 rounded-md shadow cursor-pointer">
+                        <h4 class="font-semibold text-slate-200 text-sm truncate" title="绪论：环境保护概览">绪论：环境保护概览</h4>
+                        <p class="text-xs text-slate-400">更新于: 2025-03-01 <span class="ml-2 px-1.5 py-0.5 bg-gray-500 text-slate-200 rounded-full text-xs">已归档</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 bg-slate-850 rounded-r-lg shadow-lg p-6 md:p-8 flex flex-col">
+                <header class="mb-6 pb-4 border-b border-slate-700">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <input type="text" value="第3章：土壤重金属污染与监测方法" class="text-2xl font-bold text-white bg-transparent border-0 p-0 focus:ring-0 focus:border-blue-500 w-full" placeholder="输入教案标题...">
+                            <p class="text-sm text-slate-400 mt-1">课程：土壤与固体废物监测 (环监2301班) | 最后保存: 2分钟前</p>
+                        </div>
+                        <div class="flex space-x-3 flex-shrink-0">
+                            <button class="py-2 px-4 bg-slate-600 hover:bg-slate-500 text-slate-200 rounded-md text-sm transition-colors" title="保存草稿">
+                                <i class="fas fa-save mr-1.5"></i> 保存
+                            </button>
+                            <button data-modal-target="publishLessonModal" class="py-2 px-4 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm transition-colors" title="发布教案">
+                                <i class="fas fa-paper-plane mr-1.5"></i> 发布
+                            </button>
+                             <button class="p-2 text-slate-400 hover:text-red-500 rounded-md" title="删除教案">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="mb-4 p-2 bg-slate-700 rounded-md rich-text-controls flex flex-wrap gap-1">
+                    <button title="加粗"><i class="fas fa-bold"></i></button>
+                    <button title="斜体"><i class="fas fa-italic"></i></button>
+                    <button title="下划线"><i class="fas fa-underline"></i></button>
+                    <button title="无序列表"><i class="fas fa-list-ul"></i></button>
+                    <button title="有序列表"><i class="fas fa-list-ol"></i></button>
+                    <button title="引用"><i class="fas fa-quote-left"></i></button>
+                    <button title="标题1" class="font-semibold">H1</button>
+                    <button title="标题2" class="font-semibold">H2</button>
+                    <button title="清除格式"><i class="fas fa-remove-format"></i></button>
+                    <div class="border-l border-slate-500 mx-1 h-6 self-center"></div>
+                    <button data-modal-target="addResourceModal" title="插入资源"><i class="fas fa-photo-video"></i> 插入资源</button>
+                    <button data-modal-target="addLinkModal" title="插入链接"><i class="fas fa-link"></i> 插入链接</button>
+                </div>
+
+                <textarea id="lessonContent" rows="15" class="w-full p-4 bg-slate-900 border border-slate-700 rounded-md text-slate-200 placeholder-slate-500 focus:ring-blue-500 focus:border-blue-500 flex-grow resize-none" placeholder="开始编写您的教案内容...">## 3.1 土壤重金属污染来源
+
+重金属污染主要来源于工业排放、农业活动（如化肥、农药的不当使用）、交通运输以及生活垃圾等。
+
+### 主要重金属元素
+
+* 铅 (Pb)
+* 汞 (Hg)
+* 镉 (Cd)
+* 砷 (As)
+* 铬 (Cr)
+
+## 3.2 监测方法概述
+
+常用的监测方法包括原子吸收光谱法 (AAS)、原子荧光光谱法 (AFS)、电感耦合等离子体质谱法 (ICP-MS)等。
+
+<div class="my-4 p-3 bg-slate-700 rounded-md border border-slate-600 flex items-center space-x-3">
+    <i class="far fa-file-pdf fa-2x text-red-400"></i>
+    <div>
+        <p class="text-sm font-medium text-slate-100">附件：GB15618-2018 土壤环境质量标准.pdf</p>
+        <p class="text-xs text-slate-400">2.5 MB - <a href="#" class="text-blue-400 hover:underline">预览</a> | <a href="#" class="text-red-400 hover:underline">移除</a></p>
+    </div>
+</div>
+
+## 3.3 预习要求
+请同学们预习课本P56-P78，并思考以下问题：
+1.  不同类型土壤对重金属的吸附能力有何差异？
+2.  如何选择合适的土壤采样点位？
+                </textarea>
+
+                <div class="mt-6 pt-6 border-t border-slate-700">
+                     <div class="flex justify-between items-center mb-3">
+                        <h4 class="text-lg font-semibold text-white">
+                            <i class="fas fa-clipboard-check mr-2 text-yellow-400"></i>预习任务管理
+                        </h4>
+                        <button data-modal-target="assignPreStudyModal" class="py-1.5 px-3 bg-yellow-500 hover:bg-yellow-600 text-slate-900 rounded-md text-sm font-medium">
+                            <i class="fas fa-plus-circle mr-1"></i> 布置新预习
+                        </button>
+                    </div>
+                    <div class="bg-slate-700 p-4 rounded-md">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-medium text-slate-100">预习：第三章内容及思考题</p>
+                                <p class="text-xs text-slate-400">关联教案：当前教案</p>
+                                <p class="text-xs text-slate-400">截止日期: 2025-05-20</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-green-400">15/30 学生已完成</span>
+                                <div class="mt-1 space-x-2">
+                                    <button class="text-xs text-blue-400 hover:underline">查看详情</button>
+                                    <button class="text-xs text-red-400 hover:underline">撤销</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="publishLessonModal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop bg-slate-900 bg-opacity-75 transition-opacity items-center justify-center p-4" role="dialog">
+        <div class="bg-slate-800 rounded-lg shadow-xl transform transition-all sm:max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-white"><i class="fas fa-paper-plane mr-2 text-green-400"></i>发布教案</h3>
+                <button type="button" data-modal-hide="publishLessonModal" class="text-slate-400 hover:text-slate-200"><i class="fas fa-times"></i></button>
+            </div>
+            <p class="text-sm text-slate-300 mb-4">您确定要发布《第3章：土壤重金属污染与监测方法》吗？发布后，学生将可以看到此教案及其关联的预习任务。</p>
+            <div>
+                <label for="publishTarget" class="block text-sm font-medium text-slate-300 mb-1">发布到班级 <span class="text-red-400">*</span></label>
+                <select id="publishTarget" multiple class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500">
+                    <option selected>环监2301班</option>
+                    <option>环监2302班</option>
+                    <option>全校公开课</option>
+                </select>
+                <p class="text-xs text-slate-500 mt-1">按住 Ctrl/Cmd 点击可多选。</p>
+            </div>
+            <div class="mt-4 flex items-center">
+                 <input id="notifyStudentsPublish" name="notifyStudentsPublish" type="checkbox" checked class="h-4 w-4 text-blue-600 bg-slate-700 border-slate-600 rounded focus:ring-blue-500">
+                 <label for="notifyStudentsPublish" class="ml-2 block text-sm text-slate-300">发布后通知学生</label>
+            </div>
+            <div class="mt-6 flex flex-col sm:flex-row-reverse gap-3">
+                <button type="button" data-modal-hide="publishLessonModal" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md">确认发布</button>
+                <button type="button" data-modal-hide="publishLessonModal" class="w-full sm:w-auto bg-slate-600 hover:bg-slate-500 text-slate-200 font-medium py-2 px-4 rounded-md">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="assignPreStudyModal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop bg-slate-900 bg-opacity-75 transition-opacity items-center justify-center p-4" role="dialog">
+        <div class="bg-slate-800 rounded-lg shadow-xl transform transition-all sm:max-w-lg w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-white"><i class="fas fa-clipboard-check mr-2 text-yellow-400"></i>布置预习任务</h3>
+                <button type="button" data-modal-hide="assignPreStudyModal" class="text-slate-400 hover:text-slate-200"><i class="fas fa-times"></i></button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label for="preStudyTitle" class="block text-sm font-medium text-slate-300 mb-1">任务标题 <span class="text-red-400">*</span></label>
+                    <input type="text" id="preStudyTitle" value="预习：第三章内容及思考题" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="preStudyLesson" class="block text-sm font-medium text-slate-300 mb-1">关联教案 <span class="text-red-400">*</span></label>
+                    <select id="preStudyLesson" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500">
+                        <option selected>当前教案 (第3章...)</option>
+                        <option>第4章：生活垃圾分类...</option>
+                    </select>
+                </div>
+                 <div>
+                    <label for="preStudyDescription" class="block text-sm font-medium text-slate-300 mb-1">任务说明/要求</label>
+                    <textarea id="preStudyDescription" rows="3" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="例如：请同学们阅读教案内容，并完成思考题。">请同学们阅读教案内的“预习要求”部分，并完成相关思考题。</textarea>
+                </div>
+                <div>
+                    <label for="preStudyDeadline" class="block text-sm font-medium text-slate-300 mb-1">截止日期 <span class="text-red-400">*</span></label>
+                    <input type="date" id="preStudyDeadline" value="2025-05-20" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500" style="color-scheme: dark;">
+                </div>
+                 <div class="flex items-center">
+                     <input id="notifyStudentsPreStudy" name="notifyStudentsPreStudy" type="checkbox" checked class="h-4 w-4 text-blue-600 bg-slate-700 border-slate-600 rounded focus:ring-blue-500">
+                     <label for="notifyStudentsPreStudy" class="ml-2 block text-sm text-slate-300">布置后通知学生</label>
+                </div>
+                <div class="pt-2 flex flex-col sm:flex-row-reverse gap-3">
+                    <button type="submit" data-modal-hide="assignPreStudyModal" class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-medium py-2 px-4 rounded-md">确认布置</button>
+                    <button type="button" data-modal-hide="assignPreStudyModal" class="w-full sm:w-auto bg-slate-600 hover:bg-slate-500 text-slate-200 font-medium py-2 px-4 rounded-md">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addResourceModal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop bg-slate-900 bg-opacity-75 transition-opacity items-center justify-center p-4" role="dialog">
+        <div class="bg-slate-800 rounded-lg shadow-xl transform transition-all sm:max-w-2xl w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-white"><i class="fas fa-photo-video mr-2 text-blue-400"></i>从资源中心选择资源</h3>
+                <button type="button" data-modal-hide="addResourceModal" class="text-slate-400 hover:text-slate-200"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="mb-4">
+                 <input type="text" placeholder="搜索我的资源..." class="w-full pl-4 pr-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 focus:ring-blue-500 focus:border-blue-500 text-sm">
+            </div>
+            <div class="max-h-96 overflow-y-auto space-y-2 pr-2">
+                <div class="p-3 bg-slate-700 hover:bg-slate-600 rounded-md flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center space-x-3">
+                        <i class="far fa-file-pdf fa-lg text-red-400"></i>
+                        <span class="text-sm text-slate-200">GB15618-2018 土壤环境质量标准.pdf</span>
+                    </div>
+                    <button class="text-xs py-1 px-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">选择</button>
+                </div>
+                <div class="p-3 bg-slate-700 hover:bg-slate-600 rounded-md flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center space-x-3">
+                        <i class="far fa-image fa-lg text-green-400"></i>
+                        <span class="text-sm text-slate-200">土壤分层采样示意图.jpg</span>
+                    </div>
+                     <button class="text-xs py-1 px-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">选择</button>
+                </div>
+                <div class="p-3 bg-slate-700 hover:bg-slate-600 rounded-md flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-link fa-lg text-yellow-400"></i>
+                        <span class="text-sm text-slate-200">视频: 固废填埋场渗滤液处理</span>
+                    </div>
+                     <button class="text-xs py-1 px-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">选择</button>
+                </div>
+                </div>
+            <div class="mt-6 flex flex-col sm:flex-row-reverse gap-3">
+                <button type="button" data-modal-hide="addResourceModal" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md">确认插入</button>
+                <button type="button" data-modal-hide="addResourceModal" class="w-full sm:w-auto bg-slate-600 hover:bg-slate-500 text-slate-200 font-medium py-2 px-4 rounded-md">取消</button>
+            </div>
+        </div>
+    </div>
+
+     <div id="addLinkModal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop bg-slate-900 bg-opacity-75 transition-opacity items-center justify-center p-4" role="dialog">
+        <div class="bg-slate-800 rounded-lg shadow-xl transform transition-all sm:max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-white"><i class="fas fa-link mr-2 text-blue-400"></i>插入链接</h3>
+                <button type="button" data-modal-hide="addLinkModal" class="text-slate-400 hover:text-slate-200"><i class="fas fa-times"></i></button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label for="linkText" class="block text-sm font-medium text-slate-300 mb-1">显示文本</label>
+                    <input type="text" id="linkText" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="例如：国家标准网">
+                </div>
+                <div>
+                    <label for="linkUrl" class="block text-sm font-medium text-slate-300 mb-1">链接地址 (URL) <span class="text-red-400">*</span></label>
+                    <input type="url" id="linkUrl" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com">
+                </div>
+                <div class="pt-2 flex flex-col sm:flex-row-reverse gap-3">
+                    <button type="submit" data-modal-hide="addLinkModal" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md">确认插入</button>
+                    <button type="button" data-modal-hide="addLinkModal" class="w-full sm:w-auto bg-slate-600 hover:bg-slate-500 text-slate-200 font-medium py-2 px-4 rounded-md">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script> </body>
+</html>

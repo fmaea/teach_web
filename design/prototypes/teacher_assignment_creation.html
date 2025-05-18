@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业管理 - 智慧助教平台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { /* From Design Spec */ slate: { 900: '#1e293b', 800: '#2d3748', 700: '#374151', 600: '#4b5563', 100: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 200:'#e2e8f0' }, blue: { 400: '#60a5fa', 300: '#93c5fd', 600: '#2563eb', 700: '#1d4ed8', 500: '#3b82f6' }, green: { 500: '#22c55e', 600: '#16a34a', 700: '#15803d'}, yellow: {500: '#eab308', 600: '#ca8a04'}, red: {500: '#ef4444'} }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+
+    <div class="flex h-screen">
+        <aside class="w-64 bg-slate-800 p-6 space-y-6 border-r border-slate-700 flex flex-col justify-between">
+            <div>
+                <div class="text-center mb-10">
+                     <div class="inline-block p-3 bg-blue-600 rounded-full mb-2">
+                        <i class="fas fa-seedling fa-2x text-white"></i>
+                    </div>
+                    <h1 class="text-xl font-semibold text-white">智慧助教平台</h1>
+                    <span class="text-xs text-slate-400">教师端</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="teacher_dashboard.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tachometer-alt fa-fw"></i>
+                        <span>仪表盘</span>
+                    </a>
+                    <a href="teacher_resource_management.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-book fa-fw"></i>
+                        <span>教学资源</span>
+                    </a>
+                    <a href="teacher_lesson_planning.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-edit fa-fw"></i>
+                        <span>在线备课</span>
+                    </a>
+                    <a href="teacher_assignment_creation.html" class="flex items-center space-x-3 px-4 py-2.5 bg-blue-600 text-white rounded-lg shadow-md">
+                        <i class="fas fa-tasks fa-fw"></i>
+                        <span>作业管理</span>
+                    </a>
+                     <a href="teacher_assignment_grading.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-marker fa-fw"></i>
+                        <span>作业批阅</span>
+                    </a>
+                    <a href="teacher_student_progress_overview.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-chart-line fa-fw"></i>
+                        <span>学情分析</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-bullhorn fa-fw"></i>
+                        <span>通知公告</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-comments fa-fw"></i>
+                        <span>课堂互动</span>
+                         <span class="text-xs bg-yellow-500 text-slate-900 px-1.5 py-0.5 rounded-full">V1.1</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="space-y-2 border-t border-slate-700 pt-6">
+                 <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-cog fa-fw"></i>
+                    <span>设置</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt fa-fw"></i>
+                    <span>退出登录</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto bg-slate-900" id="assignmentCreationPage">
+            <header class="mb-8 flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">作业管理</h2>
+                    <p class="text-slate-400 mt-1">创建、发布和追踪学生的作业完成情况。</p>
+                </div>
+                <button id="createNewAssignmentBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition-colors flex items-center">
+                    <i class="fas fa-plus-circle mr-2"></i> 创建新作业
+                </button>
+            </header>
+
+            <div id="assignmentViewContainer">
+                <section id="assignmentListView">
+                    <div class="mb-6 p-4 bg-slate-800 rounded-lg shadow">
+                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
+                            <div>
+                                <label for="searchAssignment" class="block text-sm font-medium text-slate-300 mb-1">搜索作业</label>
+                                <input type="text" id="searchAssignment" name="searchAssignment" class="w-full pl-4 pr-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 focus:ring-blue-500 focus:border-blue-500" placeholder="作业标题、班级...">
+                            </div>
+                            <div>
+                                <label for="assignmentStatus" class="block text-sm font-medium text-slate-300 mb-1">作业状态</label>
+                                <select id="assignmentStatus" name="assignmentStatus" class="w-full py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">所有状态</option>
+                                    <option value="draft">草稿</option>
+                                    <option value="published">已发布 (进行中)</option>
+                                    <option value="grading">批阅中</option>
+                                    <option value="completed">已结束 (已批阅)</option>
+                                    <option value="archived">已归档</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="assignmentClass" class="block text-sm font-medium text-slate-300 mb-1">目标班级</label>
+                                <select id="assignmentClass" name="assignmentClass" class="w-full py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">所有班级</option>
+                                    <option value="class_2301">环监2301班</option>
+                                    <option value="class_2302">环监2302班</option>
+                                </select>
+                            </div>
+                            <button class="bg-slate-600 hover:bg-slate-500 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center h-10">
+                                <i class="fas fa-filter mr-2"></i> 应用筛选
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 shadow-lg rounded-lg overflow-x-auto">
+                        <table class="min-w-full divide-y divide-slate-700">
+                            <thead class="bg-slate-700">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">作业标题</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">目标班级</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">截止日期</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">提交情况</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">状态</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-slate-800 divide-y divide-slate-700">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-100">第一章：课后思考题</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">环监2301班</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">2025-05-20</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">
+                                        <a href="teacher_assignment_grading.html?id=assign1" class="text-blue-400 hover:underline">25/30 已提交</a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-700 text-green-100">进行中</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-3">
+                                        <a href="teacher_assignment_grading.html?id=assign1" class="text-blue-400 hover:text-blue-300" title="去批阅"><i class="fas fa-marker"></i></a>
+                                        <button class="text-yellow-400 hover:text-yellow-300 edit-assignment-btn" data-id="assign1" title="编辑"><i class="fas fa-edit"></i></button>
+                                        <button class="text-red-400 hover:text-red-300" title="删除"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="text-slate-400 hover:text-slate-300" title="更多"><i class="fas fa-ellipsis-h"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-100">实验报告：土壤pH值测定</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">环监2302班</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">2025-05-15 (已截止)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">
+                                        <a href="teacher_assignment_grading.html?id=assign2" class="text-blue-400 hover:underline">28/29 已提交</a> (1份补交)
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-700 text-yellow-100">批阅中</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-3">
+                                        <a href="teacher_assignment_grading.html?id=assign2" class="text-blue-400 hover:text-blue-300" title="继续批阅"><i class="fas fa-marker"></i></a>
+                                        <button class="text-yellow-400 hover:text-yellow-300 edit-assignment-btn" data-id="assign2" title="编辑"><i class="fas fa-edit"></i></button>
+                                        <button class="text-slate-400 hover:text-slate-300" title="归档"><i class="fas fa-archive"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-100">第二章：固废分类练习</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">环监2301班, 环监2302班</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">待定</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">--</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-slate-600 text-slate-200">草稿</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-3">
+                                        <button class="text-blue-400 hover:text-blue-300 edit-assignment-btn" data-id="assign3" title="继续编辑"><i class="fas fa-play-circle"></i></button>
+                                        <button class="text-red-400 hover:text-red-300" title="删除"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <nav class="mt-6 flex items-center justify-between border-t border-slate-700 pt-5" aria-label="Pagination">
+                        <div class="hidden sm:block">
+                            <p class="text-sm text-slate-400">
+                                显示第 <span class="font-medium">1</span> 到 <span class="font-medium">3</span> 条，共 <span class="font-medium">15</span> 条作业
+                            </p>
+                        </div>
+                        <div class="flex-1 flex justify-between sm:justify-end space-x-2">
+                            <a href="#" class="relative inline-flex items-center px-3 py-2 rounded-md border border-slate-600 bg-slate-700 text-sm font-medium text-slate-300 hover:bg-slate-600">
+                                <i class="fas fa-chevron-left mr-2 text-xs"></i> 上一页
+                            </a>
+                            <a href="#" class="relative inline-flex items-center px-3 py-2 rounded-md border border-slate-600 bg-slate-700 text-sm font-medium text-slate-300 hover:bg-slate-600">
+                                下一页 <i class="fas fa-chevron-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </nav>
+                </section>
+
+                <section id="assignmentFormView" class="hidden bg-slate-800 p-6 md:p-8 rounded-lg shadow-xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 id="assignmentFormTitle" class="text-2xl font-semibold text-white">创建新作业</h3>
+                        <button id="backToAssignmentListBtn" class="text-slate-400 hover:text-slate-200">
+                            <i class="fas fa-arrow-left mr-2"></i> 返回列表
+                        </button>
+                    </div>
+                    <form class="space-y-6" action="#" method="POST">
+                        <input type="hidden" id="assignmentId" name="assignmentId">
+                        <div>
+                            <label for="assignmentTitle" class="block text-sm font-medium text-slate-300 mb-1">作业标题 <span class="text-red-400">*</span></label>
+                            <input type="text" name="assignmentTitle" id="assignmentTitle" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="例如：第一章课后习题">
+                        </div>
+
+                        <div>
+                            <label for="assignmentInstructions" class="block text-sm font-medium text-slate-300 mb-1">作业说明/要求 <span class="text-red-400">*</span></label>
+                            <textarea id="assignmentInstructions" name="assignmentInstructions" rows="5" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 py-2 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="详细描述作业内容、格式要求等..."></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="assignmentType" class="block text-sm font-medium text-slate-300 mb-1">作业类型 <span class="text-red-400">*</span></label>
+                                <select id="assignmentType" name="assignmentType" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="file_submission" selected>文件上传型 (报告、文档等)</option>
+                                    <option value="online_quiz">在线测验 (选择/填空 - V2.0)</option>
+                                    <option value="offline">线下提交</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="maxScore" class="block text-sm font-medium text-slate-300 mb-1">总分 <span class="text-red-400">*</span></label>
+                                <input type="number" name="maxScore" id="maxScore" value="100" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="assignmentAttachments" class="block text-sm font-medium text-slate-300 mb-1">附件 (可选)</label>
+                            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-slate-600 border-dashed rounded-md">
+                                <div class="space-y-1 text-center">
+                                    <i class="fas fa-paperclip fa-2x text-slate-500 mx-auto"></i>
+                                    <div class="flex text-sm text-slate-400">
+                                        <label for="assignmentFile" class="relative cursor-pointer bg-slate-700 rounded-md font-medium text-blue-400 hover:text-blue-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-slate-800 focus-within:ring-blue-500 px-1">
+                                            <span>上传文件</span>
+                                            <input id="assignmentFile" name="assignmentFile" type="file" class="sr-only" multiple>
+                                        </label>
+                                        <p class="pl-1">或从 <button type="button" class="text-blue-400 hover:underline">资源中心选择</button></p>
+                                    </div>
+                                    <p class="text-xs text-slate-500">可上传多个文件，如题目文档、参考资料等</p>
+                                </div>
+                            </div>
+                             <div id="uploadedFilesList" class="mt-2 space-y-1 text-sm">
+                                </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="publishDate" class="block text-sm font-medium text-slate-300 mb-1">发布时间</label>
+                                <input type="datetime-local" name="publishDate" id="publishDate" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500" style="color-scheme: dark;">
+                                <p class="text-xs text-slate-500 mt-1">留空则立即发布 (若选择发布)。</p>
+                            </div>
+                            <div>
+                                <label for="dueDate" class="block text-sm font-medium text-slate-300 mb-1">截止日期 <span class="text-red-400">*</span></label>
+                                <input type="datetime-local" name="dueDate" id="dueDate" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500" style="color-scheme: dark;">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="targetClasses" class="block text-sm font-medium text-slate-300 mb-1">发布到班级 <span class="text-red-400">*</span></label>
+                            <select id="targetClasses" name="targetClasses" multiple required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2 px-3 focus:ring-blue-500 focus:border-blue-500 h-24">
+                                <option value="class_2301">环监2301班</option>
+                                <option value="class_2302">环监2302班</option>
+                                <option value="class_all">所有我教授的班级</option>
+                            </select>
+                            <p class="text-xs text-slate-500 mt-1">按住 Ctrl/Cmd 点击可多选。</p>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <input id="allowLateSubmissions" name="allowLateSubmissions" type="checkbox" checked class="h-4 w-4 text-blue-600 bg-slate-700 border-slate-600 rounded focus:ring-blue-500">
+                                <label for="allowLateSubmissions" class="ml-2 block text-sm text-slate-300">允许迟交 (会有标记)</label>
+                            </div>
+                             <div class="flex items-center">
+                                <input id="notifyStudentsAssignment" name="notifyStudentsAssignment" type="checkbox" checked class="h-4 w-4 text-blue-600 bg-slate-700 border-slate-600 rounded focus:ring-blue-500">
+                                <label for="notifyStudentsAssignment" class="ml-2 block text-sm text-slate-300">发布/更新时通知学生</label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 flex flex-col sm:flex-row gap-3 border-t border-slate-700">
+                            <button type="submit" name="action" value="publish" class="w-full sm:w-auto inline-flex justify-center items-center rounded-md border border-transparent shadow-sm px-6 py-2.5 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-slate-800 focus:ring-green-500">
+                                <i class="fas fa-paper-plane mr-2"></i> 发布作业
+                            </button>
+                            <button type="submit" name="action" value="save_draft" class="w-full sm:w-auto inline-flex justify-center items-center rounded-md border border-slate-600 shadow-sm px-6 py-2.5 bg-slate-700 text-base font-medium text-slate-300 hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-offset-slate-800 focus:ring-slate-500">
+                                <i class="fas fa-save mr-2"></i> 保存为草稿
+                            </button>
+                             <button type="button" id="cancelAssignmentFormBtn" class="w-full sm:w-auto inline-flex justify-center items-center rounded-md border border-transparent px-6 py-2.5 text-base font-medium text-slate-400 hover:text-slate-200">
+                                取消
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const assignmentListView = document.getElementById('assignmentListView');
+            const assignmentFormView = document.getElementById('assignmentFormView');
+            const createNewAssignmentBtn = document.getElementById('createNewAssignmentBtn');
+            const backToAssignmentListBtn = document.getElementById('backToAssignmentListBtn');
+            const cancelAssignmentFormBtn = document.getElementById('cancelAssignmentFormBtn');
+            const assignmentFormTitle = document.getElementById('assignmentFormTitle');
+            const assignmentIdField = document.getElementById('assignmentId');
+
+            function showFormView(isEdit = false, assignmentData = null) {
+                assignmentListView.classList.add('hidden');
+                assignmentFormView.classList.remove('hidden');
+                if (isEdit && assignmentData) {
+                    assignmentFormTitle.textContent = '编辑作业';
+                    assignmentIdField.value = assignmentData.id;
+                    // Populate form fields here based on assignmentData
+                    document.getElementById('assignmentTitle').value = assignmentData.title || '';
+                    // ... populate other fields
+                } else {
+                    assignmentFormTitle.textContent = '创建新作业';
+                    assignmentIdField.value = '';
+                    // Reset form fields here
+                    document.getElementById('assignmentCreationPage').querySelector('form').reset();
+                }
+            }
+
+            function showListView() {
+                assignmentFormView.classList.add('hidden');
+                assignmentListView.classList.remove('hidden');
+            }
+
+            if (createNewAssignmentBtn) {
+                createNewAssignmentBtn.addEventListener('click', () => showFormView(false));
+            }
+            if (backToAssignmentListBtn) {
+                backToAssignmentListBtn.addEventListener('click', showListView);
+            }
+            if (cancelAssignmentFormBtn) {
+                cancelAssignmentFormBtn.addEventListener('click', showListView);
+            }
+
+            // Handle edit buttons in the list (example)
+            document.querySelectorAll('.edit-assignment-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const assignmentId = event.currentTarget.dataset.id;
+                    // In a real app, you'd fetch assignment data by ID here
+                    const mockData = { id: assignmentId, title: `作业 ${assignmentId} 的标题 (示例)` }; 
+                    showFormView(true, mockData);
+                });
+            });
+
+            // Check URL for #create or #edit/id to directly open the form
+            if (window.location.hash === '#create') {
+                showFormView(false);
+            } else if (window.location.hash.startsWith('#edit/')) {
+                const id = window.location.hash.split('/')[1];
+                const mockData = { id: id, title: `编辑的作业 ${id} (示例)` };
+                showFormView(true, mockData);
+            }
+
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

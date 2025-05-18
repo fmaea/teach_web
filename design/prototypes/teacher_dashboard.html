@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师仪表盘 - 智慧助教平台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { /* From Design Spec */ slate: { 900: '#1e293b', 800: '#2d3748', 700: '#374151', 600: '#4b5563', 100: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 200:'#e2e8f0' }, blue: { 400: '#60a5fa', 300: '#93c5fd', 600: '#2563eb', 700: '#1d4ed8', 500: '#3b82f6' }, green: { 500: '#22c55e', 100: '#dcfce7', 600: '#16a34a', 700: '#15803d'}, yellow: {500: '#eab308', 100: '#fef9c3'} , red: {500: '#ef4444', 100: '#fee2e2'} }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+
+    <div class="flex h-screen">
+        <aside class="w-64 bg-slate-800 p-6 space-y-6 border-r border-slate-700 flex flex-col justify-between">
+            <div>
+                <div class="text-center mb-10">
+                    <div class="inline-block p-3 bg-blue-600 rounded-full mb-2">
+                        <i class="fas fa-seedling fa-2x text-white"></i>
+                    </div>
+                    <h1 class="text-xl font-semibold text-white">智慧助教平台</h1>
+                    <span class="text-xs text-slate-400">教师端</span>
+                </div>
+
+                <nav class="space-y-2">
+                    <a href="teacher_dashboard.html" class="flex items-center space-x-3 px-4 py-2.5 bg-blue-600 text-white rounded-lg shadow-md">
+                        <i class="fas fa-tachometer-alt fa-fw"></i>
+                        <span>仪表盘</span>
+                    </a>
+                    <a href="teacher_resource_management.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-book fa-fw"></i>
+                        <span>教学资源</span>
+                    </a>
+                    <a href="teacher_lesson_planning.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-edit fa-fw"></i>
+                        <span>在线备课</span>
+                    </a>
+                    <a href="teacher_assignment_creation.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tasks fa-fw"></i>
+                        <span>作业管理</span>
+                    </a>
+                     <a href="teacher_assignment_grading.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-marker fa-fw"></i>
+                        <span>作业批阅</span>
+                    </a>
+                    <a href="teacher_student_progress_overview.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-chart-line fa-fw"></i>
+                        <span>学情分析</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-bullhorn fa-fw"></i>
+                        <span>通知公告</span>
+                    </a>
+                     <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-comments fa-fw"></i>
+                        <span>课堂互动</span>
+                         <span class="text-xs bg-yellow-500 text-slate-900 px-1.5 py-0.5 rounded-full">V1.1</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="space-y-2 border-t border-slate-700 pt-6">
+                 <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-cog fa-fw"></i>
+                    <span>设置</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt fa-fw"></i>
+                    <span>退出登录</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto bg-slate-900">
+            <header class="mb-8">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white">欢迎回来, 王老师!</h2>
+                        <p class="text-slate-400 mt-1">今天是 <span id="currentDate">2025年5月18日</span></p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="p-2 rounded-full hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            <i class="fas fa-bell text-slate-300 fa-lg"></i>
+                            <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">3</span>
+                        </button>
+                         <div class="relative">
+                            <button class="flex items-center space-x-2 p-1 rounded-full hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+                                <img class="h-10 w-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=256&h=256&auto=format&fit=crop" alt="王老师头像">
+                                <span class="text-sm font-medium text-slate-200 hidden sm:inline">王丽华 老师</span>
+                                <i class="fas fa-chevron-down text-slate-400 text-xs"></i>
+                            </button>
+                            </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-slate-800 p-6 rounded-xl shadow-lg flex items-center space-x-4">
+                    <div class="p-3 bg-blue-500 rounded-full">
+                        <i class="fas fa-users fa-lg text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-400">管理班级数</p>
+                        <p class="text-2xl font-semibold text-white">3 个</p>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl shadow-lg flex items-center space-x-4">
+                    <div class="p-3 bg-green-500 rounded-full">
+                        <i class="fas fa-book-open fa-lg text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-400">发布教案</p>
+                        <p class="text-2xl font-semibold text-white">12 份</p>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl shadow-lg flex items-center space-x-4">
+                    <div class="p-3 bg-yellow-500 rounded-full">
+                        <i class="fas fa-file-signature fa-lg text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-400">待批阅作业</p>
+                        <p class="text-2xl font-semibold text-white">5 份</p>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl shadow-lg flex items-center space-x-4">
+                    <div class="p-3 bg-red-500 rounded-full">
+                        <i class="fas fa-exclamation-triangle fa-lg text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-400">预警学生</p>
+                        <p class="text-2xl font-semibold text-white">2 名</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold text-white">今日课程安排</h3>
+                            <a href="#" class="text-sm text-blue-400 hover:text-blue-300 hover:underline">查看完整课表 <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 p-4 bg-slate-700 rounded-lg">
+                                <div class="w-16 text-center">
+                                    <p class="text-xl font-bold text-blue-400">08:00</p>
+                                    <p class="text-xs text-slate-400">AM</p>
+                                </div>
+                                <div class="border-l-2 border-blue-500 pl-4">
+                                    <h4 class="font-semibold text-slate-100">土壤采样技术要点 (环监2301班)</h4>
+                                    <p class="text-sm text-slate-400"><i class="fas fa-map-marker-alt mr-1"></i> 教学楼A-301</p>
+                                    <p class="text-sm text-slate-400"><i class="fas fa-book-reader mr-1"></i> 关联教案: 第3章第1节</p>
+                                </div>
+                                <button class="ml-auto p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-xs">
+                                    <i class="fas fa-chalkboard-teacher mr-1"></i> 进入课堂
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 bg-slate-700 rounded-lg">
+                               <div class="w-16 text-center">
+                                    <p class="text-xl font-bold text-green-400">14:30</p>
+                                    <p class="text-xs text-slate-400">PM</p>
+                                </div>
+                                <div class="border-l-2 border-green-500 pl-4">
+                                    <h4 class="font-semibold text-slate-100">固废处理工艺研讨 (环监2302班)</h4>
+                                    <p class="text-sm text-slate-400"><i class="fas fa-map-marker-alt mr-1"></i> 实验楼C-102 (线上同步)</p>
+                                     <p class="text-sm text-slate-400"><i class="fas fa-comments mr-1"></i> 将使用在线讨论</p>
+                                </div>
+                                <button class="ml-auto p-2 bg-green-600 text-white rounded-md hover:bg-green-700 text-xs">
+                                    <i class="fas fa-video mr-1"></i> 开始研讨
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-white mb-4">最近活动</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center space-x-3 p-3 bg-slate-700 rounded-md">
+                                <i class="fas fa-upload text-blue-400 fa-lg"></i>
+                                <div>
+                                    <p class="text-sm text-slate-200">您上传了新的教学资源: <span class="font-medium">"生活垃圾焚烧发电技术详解.pdf"</span></p>
+                                    <p class="text-xs text-slate-500">2小时前</p>
+                                </div>
+                                <a href="#" class="ml-auto text-xs text-blue-400 hover:underline">查看</a>
+                            </li>
+                            <li class="flex items-center space-x-3 p-3 bg-slate-700 rounded-md">
+                                <i class="fas fa-check-circle text-green-400 fa-lg"></i>
+                                <div>
+                                    <p class="text-sm text-slate-200">您批阅了 <span class="font-medium">李明同学</span> 的 <span class="font-medium">"土壤pH值测定实验报告"</span></p>
+                                    <p class="text-xs text-slate-500">昨天 17:30</p>
+                                </div>
+                                 <a href="#" class="ml-auto text-xs text-blue-400 hover:underline">详情</a>
+                            </li>
+                            <li class="flex items-center space-x-3 p-3 bg-slate-700 rounded-md">
+                                <i class="fas fa-plus-circle text-yellow-400 fa-lg"></i>
+                                <div>
+                                    <p class="text-sm text-slate-200">您发布了新的作业: <span class="font-medium">"第二章课后习题"</span> 给 <span class="font-medium">环监2301班</span></p>
+                                    <p class="text-xs text-slate-500">2天前</p>
+                                </div>
+                                 <a href="#" class="ml-auto text-xs text-blue-400 hover:underline">管理</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1 space-y-8">
+                    <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-white mb-4">快捷操作</h3>
+                        <div class="space-y-3">
+                            <a href="teacher_resource_management.html#upload" class="block w-full text-left p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
+                                <i class="fas fa-cloud-upload-alt mr-2"></i> 上传教学资源
+                            </a>
+                            <a href="teacher_lesson_planning.html#create" class="block w-full text-left p-3 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors">
+                                <i class="fas fa-plus-circle mr-2"></i> 创建新的教案
+                            </a>
+                            <a href="teacher_assignment_creation.html#create" class="block w-full text-left p-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md transition-colors">
+                                <i class="fas fa-clipboard-list mr-2"></i> 发布新的作业
+                            </a>
+                             <a href="#" class="block w-full text-left p-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors">
+                                <i class="fas fa-paper-plane mr-2"></i> 发布公告通知
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-white mb-4">待办事项</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center justify-between p-3 bg-slate-700 rounded-md">
+                                <div>
+                                    <p class="text-sm text-slate-200">批阅 "固废监测周报 (第3周)"</p>
+                                    <p class="text-xs text-slate-400">截止日期: <span class="text-red-400">明天</span> - 3份未批</p>
+                                </div>
+                                <a href="teacher_assignment_grading.html?filter=固废监测周报(第3周)" class="text-xs text-blue-400 hover:underline">去批阅</a>
+                            </li>
+                            <li class="flex items-center justify-between p-3 bg-slate-700 rounded-md">
+                                <div>
+                                    <p class="text-sm text-slate-200">准备 "大气污染控制技术" 教案</p>
+                                    <p class="text-xs text-slate-400">下周一上课</p>
+                                </div>
+                                <a href="teacher_lesson_planning.html" class="text-xs text-blue-400 hover:underline">去备课</a>
+                            </li>
+                            <li class="flex items-center justify-between p-3 bg-slate-700 rounded-md">
+                                <div>
+                                    <p class="text-sm text-slate-200">审核学生 "张三" 的请假申请</p>
+                                    <p class="text-xs text-slate-400">待处理</p>
+                                </div>
+                                <a href="#" class="text-xs text-blue-400 hover:underline">处理</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Set current date
+        const dateElement = document.getElementById('currentDate');
+        if (dateElement) {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const day = String(today.getDate()).padStart(2, '0');
+            dateElement.textContent = `${year}年${month}月${day}日`;
+        }
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

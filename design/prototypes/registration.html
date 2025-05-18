@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 土壤固废监测智慧助教平台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+     <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                     colors: { // From Design Spec
+                        slate: { 900: '#1e293b', 800: '#2d3748', 700: '#374151', 600: '#4b5563', 100: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b' },
+                        blue: { 400: '#60a5fa', 300: '#93c5fd', 600: '#2563eb', 700: '#1d4ed8', 500: '#3b82f6' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-lg bg-slate-800 shadow-2xl rounded-xl p-8 md:p-10">
+        <div class="text-center mb-8">
+            <div class="inline-block p-3 bg-blue-600 rounded-full mb-4">
+                <i class="fas fa-user-plus fa-2x text-white"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-white">创建您的账户</h1>
+            <p class="text-slate-400 mt-1">加入土壤固废监测智慧助教平台</p>
+        </div>
+
+        <form action="#" method="POST" class="space-y-6">
+            <div>
+                <label for="fullName" class="block text-sm font-medium text-slate-300 mb-1">姓名</label>
+                 <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-user text-slate-500"></i>
+                    </div>
+                    <input id="fullName" name="fullName" type="text" autocomplete="name" required
+                           class="block w-full pl-10 pr-3 py-2.5 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           placeholder="请输入您的真实姓名">
+                </div>
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium text-slate-300 mb-1">邮箱地址</label>
+                 <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-envelope text-slate-500"></i>
+                    </div>
+                    <input id="email" name="email" type="email" autocomplete="email" required
+                           class="block w-full pl-10 pr-3 py-2.5 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           placeholder="you@example.com">
+                </div>
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-slate-300 mb-1">设置密码</label>
+                 <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-lock text-slate-500"></i>
+                    </div>
+                    <input id="password" name="password" type="password" autocomplete="new-password" required
+                           class="block w-full pl-10 pr-3 py-2.5 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           placeholder="至少8位字符">
+                </div>
+            </div>
+
+            <div>
+                <label for="confirm-password" class="block text-sm font-medium text-slate-300 mb-1">确认密码</label>
+                 <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-check-circle text-slate-500"></i>
+                    </div>
+                    <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" required
+                           class="block w-full pl-10 pr-3 py-2.5 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           placeholder="再次输入密码">
+                </div>
+            </div>
+
+            <div>
+                <label for="role" class="block text-sm font-medium text-slate-300 mb-1">您的角色</label>
+                <select id="role" name="role" required
+                        class="block w-full py-2.5 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="" disabled selected class="text-slate-500">请选择您的角色</option>
+                    <option value="teacher">教师</option>
+                    <option value="student">学生</option>
+                </select>
+            </div>
+             <div>
+                <label for="invitation-code" class="block text-sm font-medium text-slate-300 mb-1">邀请码 (可选)</label>
+                 <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-ticket-alt text-slate-500"></i>
+                    </div>
+                    <input id="invitation-code" name="invitation-code" type="text"
+                           class="block w-full pl-10 pr-3 py-2.5 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           placeholder="如果您有邀请码，请在此输入">
+                </div>
+            </div>
+
+
+            <div class="flex items-center">
+                <input id="terms" name="terms" type="checkbox" required
+                       class="h-4 w-4 text-blue-600 bg-slate-700 border-slate-600 rounded focus:ring-blue-500">
+                <label for="terms" class="ml-2 block text-sm text-slate-400">我已阅读并同意
+                    <a href="#" class="font-medium text-blue-400 hover:text-blue-300">服务条款</a> 和
+                    <a href="#" class="font-medium text-blue-400 hover:text-blue-300">隐私政策</a>
+                </label>
+            </div>
+
+            <div>
+                <button type="submit"
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-blue-500 transition duration-150 ease-in-out">
+                    <i class="fas fa-check-circle mr-2"></i> 注 册
+                </button>
+            </div>
+        </form>
+
+        <p class="mt-8 text-center text-sm text-slate-500">
+            已经有账户了?
+            <a href="login.html" class="font-medium text-blue-400 hover:text-blue-300">
+                点此登录
+            </a>
+        </p>
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

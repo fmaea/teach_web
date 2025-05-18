@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学情分析 - 智慧助教平台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { /* From Design Spec */ slate: { 900: '#1e293b', 800: '#2d3748', 700: '#374151', 600: '#4b5563', 100: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 200:'#e2e8f0' }, blue: { 400: '#60a5fa', 300: '#93c5fd', 600: '#2563eb', 700: '#1d4ed8', 500: '#3b82f6' }, green: { 500: '#22c55e', 100: '#dcfce7', 600: '#16a34a'}, yellow: {500: '#eab308', 100: '#fef9c3'} , red: {500: '#ef4444', 100: '#fee2e2'} }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+
+    <div class="flex h-screen">
+        <aside class="w-64 bg-slate-800 p-6 space-y-6 border-r border-slate-700 flex flex-col justify-between">
+            <div>
+                <div class="text-center mb-10">
+                     <div class="inline-block p-3 bg-blue-600 rounded-full mb-2">
+                        <i class="fas fa-seedling fa-2x text-white"></i>
+                    </div>
+                    <h1 class="text-xl font-semibold text-white">智慧助教平台</h1>
+                    <span class="text-xs text-slate-400">教师端</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="teacher_dashboard.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tachometer-alt fa-fw"></i>
+                        <span>仪表盘</span>
+                    </a>
+                    <a href="teacher_resource_management.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-book fa-fw"></i>
+                        <span>教学资源</span>
+                    </a>
+                    <a href="teacher_lesson_planning.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-edit fa-fw"></i>
+                        <span>在线备课</span>
+                    </a>
+                    <a href="teacher_assignment_creation.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tasks fa-fw"></i>
+                        <span>作业管理</span>
+                    </a>
+                     <a href="teacher_assignment_grading.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-marker fa-fw"></i>
+                        <span>作业批阅</span>
+                    </a>
+                    <a href="teacher_student_progress_overview.html" class="flex items-center space-x-3 px-4 py-2.5 bg-blue-600 text-white rounded-lg shadow-md">
+                        <i class="fas fa-chart-line fa-fw"></i>
+                        <span>学情分析</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-bullhorn fa-fw"></i>
+                        <span>通知公告</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-comments fa-fw"></i>
+                        <span>课堂互动</span>
+                         <span class="text-xs bg-yellow-500 text-slate-900 px-1.5 py-0.5 rounded-full">V1.1</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="space-y-2 border-t border-slate-700 pt-6">
+                 <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-cog fa-fw"></i>
+                    <span>设置</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt fa-fw"></i>
+                    <span>退出登录</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto bg-slate-900">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-white">学情分析概览</h2>
+                <p class="text-slate-400 mt-1">追踪和分析学生的学习行为与表现。</p>
+            </header>
+
+            <section class="mb-8 p-4 bg-slate-800 rounded-lg shadow">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                    <div>
+                        <label for="progressClass" class="block text-sm font-medium text-slate-300 mb-1">选择班级</label>
+                        <select id="progressClass" name="progressClass" class="w-full py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="all_my_classes">我教的所有班级</option>
+                            <option value="class_2301" selected>环监2301班</option>
+                            <option value="class_2302">环监2302班</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="dateRange" class="block text-sm font-medium text-slate-300 mb-1">时间范围</label>
+                        <select id="dateRange" name="dateRange" class="w-full py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="last_7_days">最近7天</option>
+                            <option value="last_30_days" selected>最近30天</option>
+                            <option value="this_semester">本学期</option>
+                            <option value="custom">自定义范围...</option>
+                        </select>
+                    </div>
+                     <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center h-10">
+                        <i class="fas fa-sync-alt mr-2"></i> 加载数据
+                    </button>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-slate-800 p-5 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-sm text-slate-400">平均作业得分率</p>
+                        <i class="fas fa-percentage text-green-500"></i>
+                    </div>
+                    <p class="text-3xl font-semibold text-white">82.5%</p>
+                    <p class="text-xs text-green-400 mt-1">+2.1% (较上周期)</p>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl shadow-lg">
+                     <div class="flex items-center justify-between mb-1">
+                        <p class="text-sm text-slate-400">作业按时提交率</p>
+                        <i class="fas fa-clock text-blue-500"></i>
+                    </div>
+                    <p class="text-3xl font-semibold text-white">91.3%</p>
+                    <p class="text-xs text-slate-400 mt-1">-0.5% (较上周期)</p>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-sm text-slate-400">平均资源查看数/人</p>
+                         <i class="fas fa-eye text-yellow-500"></i>
+                    </div>
+                    <p class="text-3xl font-semibold text-white">15.2</p>
+                     <p class="text-xs text-green-400 mt-1">+3 (较上周期)</p>
+                </div>
+                 <div class="bg-slate-800 p-5 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-sm text-slate-400">活跃学生比例</p>
+                         <i class="fas fa-user-check text-purple-500"></i>
+                    </div>
+                    <p class="text-3xl font-semibold text-white">95%</p>
+                    <p class="text-xs text-slate-400 mt-1">(本周)</p>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                    <h4 class="text-lg font-semibold text-white mb-4">作业平均分趋势 (最近5次作业)</h4>
+                    <div class="h-64 md:h-80">
+                        <canvas id="assignmentScoresChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                    <h4 class="text-lg font-semibold text-white mb-4">学生在线时长趋势 (周平均)</h4>
+                     <div class="h-64 md:h-80">
+                        <canvas id="studentEngagementChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-slate-800 shadow-lg rounded-lg overflow-x-auto">
+                <div class="p-4 border-b border-slate-700 flex justify-between items-center">
+                    <h3 class="text-xl font-semibold text-white">学生个体表现概览 (环监2301班)</h3>
+                     <div class="flex items-center space-x-2">
+                        <input type="text" placeholder="搜索学生姓名/学号..." class="py-1.5 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 focus:ring-blue-500 focus:border-blue-500 text-sm" style="width: 200px;">
+                        <button class="text-sm py-1.5 px-3 bg-slate-600 hover:bg-slate-500 rounded-md"><i class="fas fa-sort-amount-down mr-1"></i> 排序</button>
+                    </div>
+                </div>
+                <table class="min-w-full divide-y divide-slate-700">
+                    <thead class="bg-slate-700">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">学生姓名</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">学号</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">平均分</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">作业完成率</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">资源查看数</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">风险等级</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-slate-800 divide-y divide-slate-700">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-100">李小明</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">202301001</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-400">92.0</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-400">100%</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">25</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-0.5 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-700 text-green-100">低</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-blue-400 hover:text-blue-300" title="查看详细报告"><i class="fas fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-100">张三</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">202301002</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-yellow-400">75.5</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-yellow-400">80% (2次迟交)</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">12</td>
+                             <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-0.5 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-700 text-yellow-100">中</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-blue-400 hover:text-blue-300" title="查看详细报告"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="ml-2 text-yellow-400 hover:text-yellow-300" title="发送提醒"><i class="fas fa-bell"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-100">王小花</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">202301003</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-red-400">58.0</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-red-400">60% (1次未交)</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">5</td>
+                             <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-0.5 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-700 text-red-100">高</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-blue-400 hover:text-blue-300" title="查看详细报告"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="ml-2 text-red-400 hover:text-red-300" title="重点关注"><i class="fas fa-exclamation-triangle"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+                 <nav class="mt-0 flex items-center justify-between border-t border-slate-700 px-4 py-3" aria-label="Pagination">
+                    <div class="hidden sm:block">
+                        <p class="text-sm text-slate-400">
+                            显示 <span class="font-medium">1-10</span> of <span class="font-medium">30</span> 学生
+                        </p>
+                    </div>
+                    <div class="flex-1 flex justify-between sm:justify-end space-x-2">
+                        <a href="#" class="relative inline-flex items-center px-3 py-1.5 rounded-md border border-slate-600 bg-slate-700 text-xs font-medium text-slate-300 hover:bg-slate-600">上一页</a>
+                        <a href="#" class="relative inline-flex items-center px-3 py-1.5 rounded-md border border-slate-600 bg-slate-700 text-xs font-medium text-slate-300 hover:bg-slate-600">下一页</a>
+                    </div>
+                </nav>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Placeholder Chart.js data and initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            const commonChartOptions = (isDarkMode = true) => ({
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: isDarkMode ? '#cbd5e1' : '#4b5563' } } // slate-300 or gray-600
+                },
+                scales: {
+                    x: { ticks: { color: isDarkMode ? '#94a3b8' : '#6b7280' }, grid: { color: isDarkMode ? '#374151': '#e5e7eb' } }, // slate-400 or gray-500, slate-700 or gray-200
+                    y: { ticks: { color: isDarkMode ? '#94a3b8' : '#6b7280' }, grid: { color: isDarkMode ? '#374151': '#e5e7eb' } }
+                }
+            });
+
+            // Assignment Scores Chart
+            const assignmentCtx = document.getElementById('assignmentScoresChart')?.getContext('2d');
+            if (assignmentCtx) {
+                new Chart(assignmentCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['作业1', '作业2', '作业3', '作业4', '作业5'],
+                        datasets: [{
+                            label: '班级平均分',
+                            data: [75, 80, 78, 85, 82],
+                            borderColor: '#60a5fa', // blue-400
+                            backgroundColor: 'rgba(96, 165, 250, 0.1)',
+                            tension: 0.1,
+                            fill: true,
+                        }]
+                    },
+                    options: commonChartOptions()
+                });
+            }
+
+            // Student Engagement Chart
+            const engagementCtx = document.getElementById('studentEngagementChart')?.getContext('2d');
+            if (engagementCtx) {
+                new Chart(engagementCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['第1周', '第2周', '第3周', '第4周', '第5周'],
+                        datasets: [{
+                            label: '平均在线时长 (小时)',
+                            data: [5.2, 6.1, 5.5, 6.8, 6.5],
+                            backgroundColor: '#34d399', // emerald-400
+                            borderColor: '#10b981', // emerald-500
+                            borderWidth: 1
+                        }]
+                    },
+                    options: commonChartOptions()
+                });
+            }
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

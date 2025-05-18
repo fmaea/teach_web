@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教学资源管理 - 智慧助教平台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { /* From Design Spec */ slate: { 900: '#1e293b', 800: '#2d3748', 700: '#374151', 600: '#4b5563', 100: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 200:'#e2e8f0' }, blue: { 400: '#60a5fa', 300: '#93c5fd', 600: '#2563eb', 700: '#1d4ed8', 500: '#3b82f6' }, green: { 500: '#22c55e'}, red: {500: '#ef4444'}, gray: { 500: '#6b7280'} }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+
+    <div class="flex h-screen">
+        <aside class="w-64 bg-slate-800 p-6 space-y-6 border-r border-slate-700 flex flex-col justify-between">
+            <div>
+                <div class="text-center mb-10">
+                     <div class="inline-block p-3 bg-blue-600 rounded-full mb-2">
+                        <i class="fas fa-seedling fa-2x text-white"></i>
+                    </div>
+                    <h1 class="text-xl font-semibold text-white">智慧助教平台</h1>
+                    <span class="text-xs text-slate-400">教师端</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="teacher_dashboard.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tachometer-alt fa-fw"></i>
+                        <span>仪表盘</span>
+                    </a>
+                    <a href="teacher_resource_management.html" class="flex items-center space-x-3 px-4 py-2.5 bg-blue-600 text-white rounded-lg shadow-md">
+                        <i class="fas fa-book fa-fw"></i>
+                        <span>教学资源</span>
+                    </a>
+                    <a href="teacher_lesson_planning.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-edit fa-fw"></i>
+                        <span>在线备课</span>
+                    </a>
+                    <a href="teacher_assignment_creation.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-tasks fa-fw"></i>
+                        <span>作业管理</span>
+                    </a>
+                     <a href="teacher_assignment_grading.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-marker fa-fw"></i>
+                        <span>作业批阅</span>
+                    </a>
+                    <a href="teacher_student_progress_overview.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-chart-line fa-fw"></i>
+                        <span>学情分析</span>
+                    </a>
+                     <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-bullhorn fa-fw"></i>
+                        <span>通知公告</span>
+                    </a>
+                     <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-comments fa-fw"></i>
+                        <span>课堂互动</span>
+                         <span class="text-xs bg-yellow-500 text-slate-900 px-1.5 py-0.5 rounded-full">V1.1</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="space-y-2 border-t border-slate-700 pt-6">
+                 <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-cog fa-fw"></i>
+                    <span>设置</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt fa-fw"></i>
+                    <span>退出登录</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto bg-slate-900">
+            <header class="mb-8 flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">教学资源中心</h2>
+                    <p class="text-slate-400 mt-1">管理、上传和分享您的教学材料。</p>
+                </div>
+                <button id="openUploadModalButton" data-modal-target="uploadResourceModal" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition-colors flex items-center">
+                    <i class="fas fa-plus-circle mr-2"></i> 上传新资源
+                </button>
+            </header>
+
+            <section class="mb-6 p-4 bg-slate-800 rounded-lg shadow">
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
+                    <div>
+                        <label for="searchResource" class="block text-sm font-medium text-slate-300 mb-1">关键词搜索</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-slate-500"></i>
+                            </div>
+                            <input type="text" id="searchResource" name="searchResource" class="w-full pl-10 pr-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 focus:ring-blue-500 focus:border-blue-500" placeholder="搜索资源名称、标签...">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="resourceType" class="block text-sm font-medium text-slate-300 mb-1">资源类型</label>
+                        <select id="resourceType" name="resourceType" class="w-full py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">所有类型</option>
+                            <option value="document">文档 (PDF, Word)</option>
+                            <option value="image">图片 (JPG, PNG)</option>
+                            <option value="video_link">视频链接</option>
+                            <option value="interactive">交互课件 (H5)</option>
+                            <option value="archive">压缩包 (ZIP)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="resourceCategory" class="block text-sm font-medium text-slate-300 mb-1">预设分类</label>
+                        <select id="resourceCategory" name="resourceCategory" class="w-full py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">所有分类</option>
+                            <option value="sampling_tech">采样技术</option>
+                            <option value="analysis_methods">分析方法</option>
+                            <option value="pollution_control">污染控制</option>
+                            <option value="laws_standards">法律与标准</option>
+                            <option value="case_studies">案例研究</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    <button class="bg-slate-600 hover:bg-slate-500 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center h-10">
+                        <i class="fas fa-filter mr-2"></i> 应用筛选
+                    </button>
+                </div>
+            </section>
+
+            <div class="mb-6 border-b border-slate-700">
+                <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                    <a href="#" class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-blue-500 text-blue-400" aria-current="page">
+                        <i class="fas fa-globe-americas mr-1.5"></i> 公共资源库 (235)
+                    </a>
+                    <a href="#" class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-400">
+                        <i class="fas fa-user-shield mr-1.5"></i> 我的资源 (42)
+                    </a>
+                     <a href="#" class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-400">
+                        <i class="fas fa-share-alt mr-1.5"></i> 我分享的 (12)
+                    </a>
+                </nav>
+            </div>
+
+            <div class="mb-4 flex justify-end items-center">
+                 <span class="text-sm text-slate-400 mr-4">显示 1-10 of 235 个资源</span>
+                <div class="flex items-center space-x-2">
+                    <button title="列表视图" class="p-2 rounded-md text-slate-400 bg-slate-700 hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-list"></i>
+                    </button>
+                    <button title="网格视图" class="p-2 rounded-md text-blue-400 bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                </div>
+            </div>
+
+            <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <div class="h-40 bg-slate-700 flex items-center justify-center">
+                         <i class="far fa-file-pdf fa-4x text-red-500"></i>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <h4 class="font-semibold text-slate-100 truncate mb-1" title="土壤重金属污染监测国家标准 GB15618-2018">土壤重金属污染监测国家标准 GB15618-2018.pdf</h4>
+                        <p class="text-xs text-slate-400 mb-1">类型: 文档 (PDF) <span class="mx-1">|</span> 2.5 MB</p>
+                        <p class="text-xs text-slate-400">分类: 法律与标准</p>
+                        <p class="text-xs text-slate-500 mt-2">上传者: 王老师 <span class="mx-1">|</span> 2025-03-15</p>
+                    </div>
+                    <div class="p-3 bg-slate-700 border-t border-slate-600 flex items-center justify-between text-xs">
+                        <div class="flex items-center space-x-2">
+                            <button class="text-blue-400 hover:text-blue-300" title="下载"><i class="fas fa-download"></i></button>
+                            <button class="text-green-400 hover:text-green-300" title="添加到教案"><i class="fas fa-plus-circle"></i></button>
+                            <button class="text-yellow-400 hover:text-yellow-300" title="编辑"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <button class="text-red-400 hover:text-red-300" title="删除"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1590001009162-a0854ee3ab3c?q=80&w=400&h=250&auto=format&fit=crop" alt="土壤分层采样示意图" class="w-full h-40 object-cover">
+                    <div class="p-4 flex-grow">
+                        <h4 class="font-semibold text-slate-100 truncate mb-1" title="土壤分层采样示意图">土壤分层采样示意图.jpg</h4>
+                        <p class="text-xs text-slate-400 mb-1">类型: 图片 (JPG) <span class="mx-1">|</span> 850 KB</p>
+                        <p class="text-xs text-slate-400">分类: 采样技术</p>
+                        <p class="text-xs text-slate-500 mt-2">上传者: 李老师 <span class="mx-1">|</span> 2025-04-02</p>
+                    </div>
+                     <div class="p-3 bg-slate-700 border-t border-slate-600 flex items-center justify-between text-xs">
+                        <div class="flex items-center space-x-2">
+                            <button class="text-blue-400 hover:text-blue-300" title="下载"><i class="fas fa-download"></i></button>
+                            <button class="text-green-400 hover:text-green-300" title="添加到教案"><i class="fas fa-plus-circle"></i></button>
+                            <button class="text-yellow-400 hover:text-yellow-300" title="编辑"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <button class="text-red-400 hover:text-red-300" title="删除"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <div class="h-40 bg-cover bg-center flex items-center justify-center" style="background-image: url('https://images.pexels.com/photos/3861457/pexels-photo-3861457.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&dpr=1');">
+                         <i class="far fa-play-circle fa-4x text-white opacity-75"></i>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <h4 class="font-semibold text-slate-100 truncate mb-1" title="在线视频：固废填埋场渗滤液处理工艺">在线视频：固废填埋场渗滤液处理工艺</h4>
+                        <p class="text-xs text-slate-400 mb-1">类型: 视频链接 <span class="mx-1">|</span> 外部资源</p>
+                        <p class="text-xs text-slate-400">分类: 污染控制</p>
+                        <p class="text-xs text-slate-500 mt-2">上传者: 王老师 <span class="mx-1">|</span> 2025-05-10</p>
+                    </div>
+                     <div class="p-3 bg-slate-700 border-t border-slate-600 flex items-center justify-between text-xs">
+                        <div class="flex items-center space-x-2">
+                            <a href="https://www.example.com/video-link" target="_blank" class="text-blue-400 hover:text-blue-300" title="打开链接"><i class="fas fa-external-link-alt"></i></a>
+                            <button class="text-green-400 hover:text-green-300" title="添加到教案"><i class="fas fa-plus-circle"></i></button>
+                            <button class="text-yellow-400 hover:text-yellow-300" title="编辑"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <button class="text-red-400 hover:text-red-300" title="删除"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+                <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <div class="h-40 bg-slate-700 flex items-center justify-center">
+                         <i class="fas fa-mouse-pointer fa-4x text-green-500"></i>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <h4 class="font-semibold text-slate-100 truncate mb-1" title="H5互动：土壤分层结构模拟">H5互动：土壤分层结构模拟</h4>
+                        <p class="text-xs text-slate-400 mb-1">类型: 交互课件 (H5) <span class="mx-1">|</span> 链接</p>
+                        <p class="text-xs text-slate-400">分类: 案例研究</p>
+                        <p class="text-xs text-slate-500 mt-2">上传者: 赵老师 <span class="mx-1">|</span> 2025-04-20</p>
+                    </div>
+                     <div class="p-3 bg-slate-700 border-t border-slate-600 flex items-center justify-between text-xs">
+                        <div class="flex items-center space-x-2">
+                            <a href="#" class="text-blue-400 hover:text-blue-300" title="预览"><i class="fas fa-eye"></i></a>
+                            <button class="text-green-400 hover:text-green-300" title="添加到教案"><i class="fas fa-plus-circle"></i></button>
+                            <button class="text-yellow-400 hover:text-yellow-300" title="编辑"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <button class="text-red-400 hover:text-red-300" title="删除"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+
+            </section>
+
+            <nav class="mt-8 flex items-center justify-between border-t border-slate-700 pt-6" aria-label="Pagination">
+                <div class="hidden sm:block">
+                    <p class="text-sm text-slate-400">
+                        显示第 <span class="font-medium">1</span> 到 <span class="font-medium">10</span> 条，共 <span class="font-medium">235</span> 条结果
+                    </p>
+                </div>
+                <div class="flex-1 flex justify-between sm:justify-end space-x-2">
+                    <a href="#" class="relative inline-flex items-center px-3 py-2 rounded-md border border-slate-600 bg-slate-700 text-sm font-medium text-slate-300 hover:bg-slate-600">
+                        <i class="fas fa-chevron-left mr-2 text-xs"></i> 上一页
+                    </a>
+                    <a href="#" class="relative inline-flex items-center px-3 py-2 rounded-md border border-slate-600 bg-slate-700 text-sm font-medium text-slate-300 hover:bg-slate-600">
+                        下一页 <i class="fas fa-chevron-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </nav>
+
+        </main>
+    </div>
+
+    <div id="uploadResourceModal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop bg-slate-900 bg-opacity-75 transition-opacity items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-slate-800 rounded-lg shadow-xl transform transition-all sm:max-w-lg w-full p-6 md:p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-white" id="modal-title"><i class="fas fa-cloud-upload-alt mr-2 text-blue-400"></i>上传新的教学资源</h3>
+                <button type="button" data-modal-hide="uploadResourceModal" class="text-slate-400 hover:text-slate-200">
+                    <span class="sr-only">关闭</span>
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
+
+            <form class="space-y-6">
+                <div>
+                    <label for="resourceName" class="block text-sm font-medium text-slate-300 mb-1">资源名称 <span class="text-red-400">*</span></label>
+                    <input type="text" name="resourceName" id="resourceName" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="例如：土壤采样标准操作流程">
+                </div>
+
+                <div>
+                    <label for="uploadResourceType" class="block text-sm font-medium text-slate-300 mb-1">资源类型 <span class="text-red-400">*</span></label>
+                    <select id="uploadResourceType" name="uploadResourceType" required class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="document">文档 (PDF, Word, PPT)</option>
+                        <option value="image">图片 (JPG, PNG, GIF)</option>
+                        <option value="video_link">视频链接 (URL)</option>
+                        <option value="audio_link">音频链接 (URL)</option>
+                        <option value="h5_link">H5互动课件 (URL)</option>
+                        <option value="archive">压缩包 (ZIP, RAR)</option>
+                        <option value="other">其他文件</option>
+                    </select>
+                </div>
+
+                <div id="fileUploadGroup">
+                    <label for="resourceFile" class="block text-sm font-medium text-slate-300 mb-1">选择文件 <span class="text-red-400">*</span></label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-slate-600 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <i class="fas fa-file-alt fa-3x text-slate-500 mx-auto"></i>
+                            <div class="flex text-sm text-slate-400">
+                                <label for="resourceFile" class="relative cursor-pointer bg-slate-700 rounded-md font-medium text-blue-400 hover:text-blue-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-slate-800 focus-within:ring-blue-500 px-1">
+                                    <span>点击上传</span>
+                                    <input id="resourceFile" name="resourceFile" type="file" class="sr-only">
+                                </label>
+                                <p class="pl-1">或拖拽文件到此处</p>
+                            </div>
+                            <p class="text-xs text-slate-500">PDF, DOCX, JPG, PNG, MP4 (链接), ZIP 等. 最大 50MB</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="linkUploadGroup" class="hidden">
+                    <label for="resourceUrl" class="block text-sm font-medium text-slate-300 mb-1">资源链接 (URL) <span class="text-red-400">*</span></label>
+                    <input type="url" name="resourceUrl" id="resourceUrl" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com/resource">
+                </div>
+
+
+                <div>
+                    <label for="uploadResourceCategory" class="block text-sm font-medium text-slate-300 mb-1">预设分类</label>
+                     <select id="uploadResourceCategory" name="uploadResourceCategory" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">选择分类</option>
+                        <option value="sampling_tech">采样技术</option>
+                        <option value="analysis_methods">分析方法</option>
+                        <option value="pollution_control">污染控制</option>
+                        <option value="laws_standards">法律与标准</option>
+                        <option value="case_studies">案例研究</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="resourceDescription" class="block text-sm font-medium text-slate-300 mb-1">资源描述 (可选)</label>
+                    <textarea id="resourceDescription" name="resourceDescription" rows="3" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 py-2 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="简要描述资源内容..."></textarea>
+                </div>
+
+                 <div>
+                    <label for="resourceTags" class="block text-sm font-medium text-slate-300 mb-1">标签 (可选, 逗号分隔)</label>
+                    <input type="text" name="resourceTags" id="resourceTags" class="w-full bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 py-2.5 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="例如：重金属, AAS, 监测规范">
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <input id="shareToPublic" name="shareToPublic" type="checkbox" class="h-4 w-4 text-blue-600 bg-slate-700 border-slate-600 rounded focus:ring-blue-500">
+                    <label for="shareToPublic" class="text-sm text-slate-300">共享到公共资源库</label>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row-reverse gap-3">
+                    <button type="submit" class="w-full sm:w-auto inline-flex justify-center rounded-md border border-transparent shadow-sm px-6 py-2.5 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-blue-500">
+                        <i class="fas fa-check-circle mr-2"></i>确认上传
+                    </button>
+                    <button type="button" data-modal-hide="uploadResourceModal" class="w-full sm:w-auto inline-flex justify-center rounded-md border border-slate-600 shadow-sm px-6 py-2.5 bg-slate-700 text-base font-medium text-slate-300 hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-slate-500">
+                        取消
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple JS for modal and conditional input display
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploadResourceTypeSelect = document.getElementById('uploadResourceType');
+            const fileUploadGroup = document.getElementById('fileUploadGroup');
+            const linkUploadGroup = document.getElementById('linkUploadGroup');
+            const resourceFile = document.getElementById('resourceFile');
+            const resourceUrl = document.getElementById('resourceUrl');
+
+            if (uploadResourceTypeSelect) {
+                uploadResourceTypeSelect.addEventListener('change', function() {
+                    if (this.value.includes('_link')) {
+                        fileUploadGroup.classList.add('hidden');
+                        linkUploadGroup.classList.remove('hidden');
+                        resourceFile.removeAttribute('required');
+                        resourceUrl.setAttribute('required', 'required');
+                    } else {
+                        fileUploadGroup.classList.remove('hidden');
+                        linkUploadGroup.classList.add('hidden');
+                        resourceUrl.removeAttribute('required');
+                        resourceFile.setAttribute('required', 'required');
+                    }
+                });
+                // Trigger change on load in case a link type is pre-selected
+                uploadResourceTypeSelect.dispatchEvent(new Event('change'));
+            }
+        });
+    </script>
+    <script src="assets/js/main.js"></script> </body>
+</html>

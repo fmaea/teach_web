@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>土壤固废监测智慧助教平台 - HTML 原型</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // or 'media'
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            750: '#303d50', // Example custom color
+                            850: '#202a3a',
+                        },
+                        // Add other custom colors or overrides from Design_Spec.md
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Additional styles specific to index.html if needed */
+        body {
+            background-color: #111827; /* bg-gray-900 equivalent for the very outer page */
+        }
+        .index-header {
+            background-color: #1f2937; /* bg-gray-800 */
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            border-bottom: 1px solid #374151; /* bg-gray-700 */
+        }
+        .index-header h1 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 0.5rem;
+        }
+        .index-header p {
+            font-size: 1.125rem; /* text-lg */
+            color: #d1d5db; /* text-gray-300 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="index-header">
+        <h1>土壤固废监测智慧助教平台 - HTML 原型概览</h1>
+        <p>所有核心界面原型将在此平铺展示，每个界面模拟一个独立的浏览器窗口。</p>
+        <p class="text-sm text-slate-400 mt-2">默认采用暗黑主题。所有图片来自 Unsplash 或 Pexels (已在代码中注释来源)。</p>
+    </header>
+
+    <main id="prototype-showcase" class="p-4 md:p-8">
+        <div class="text-center text-slate-400 text-lg">
+            正在加载原型界面... 如果长时间未显示，请确保 JavaScript 已启用。
+        </div>
+    </main>
+
+    <footer class="text-center p-8 text-slate-500 text-sm border-t border-slate-700 mt-12">
+        <p>&copy; 2025 土壤固废监测智慧助教平台原型. 使用 Tailwind CSS & FontAwesome.</p>
+        <p class="mt-1">仅用于演示和开发参考。</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

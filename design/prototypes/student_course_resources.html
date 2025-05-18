@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程资源 - 智慧助教平台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { /* From Design Spec */ slate: { 900: '#1e293b', 800: '#2d3748', 700: '#374151', 600: '#4b5563', 100: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 200:'#e2e8f0' }, blue: { 400: '#60a5fa', 300: '#93c5fd', 600: '#2563eb', 700: '#1d4ed8', 500: '#3b82f6' }, green: { 500: '#22c55e'}, red: {500: '#ef4444'}, gray: {500: '#6b7280'} }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+
+    <div class="flex h-screen">
+        <aside class="w-64 bg-slate-800 p-6 space-y-6 border-r border-slate-700 flex flex-col justify-between">
+            <div>
+                <div class="text-center mb-10">
+                    <div class="inline-block p-3 bg-blue-600 rounded-full mb-2">
+                        <i class="fas fa-user-graduate fa-2x text-white"></i>
+                    </div>
+                    <h1 class="text-xl font-semibold text-white">智慧助教平台</h1>
+                    <span class="text-xs text-slate-400">学生端</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="student_dashboard.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-home fa-fw"></i>
+                        <span>我的主页</span>
+                    </a>
+                    <a href="student_course_resources.html" class="flex items-center space-x-3 px-4 py-2.5 bg-blue-600 text-white rounded-lg shadow-md">
+                        <i class="fas fa-folder-open fa-fw"></i>
+                        <span>课程资源</span>
+                    </a>
+                    <a href="student_assignment_submission.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-file-pen fa-fw"></i>
+                        <span>我的作业</span>
+                    </a>
+                    <a href="student_grades_feedback.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-clipboard-check fa-fw"></i>
+                        <span>成绩与反馈</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-calendar-alt fa-fw"></i>
+                        <span>我的课表</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-comments fa-fw"></i>
+                        <span>课堂互动</span>
+                         <span class="text-xs bg-yellow-500 text-slate-900 px-1.5 py-0.5 rounded-full">V1.1</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="space-y-2 border-t border-slate-700 pt-6">
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-user-cog fa-fw"></i>
+                    <span>账户设置</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-2.5 text-slate-300 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt fa-fw"></i>
+                    <span>退出登录</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto bg-slate-900">
+            <header class="mb-8 flex flex-col md:flex-row justify-between md:items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">课程资源</h2>
+                    <p class="text-slate-400 mt-1">查看老师发布的教案、课件和其他学习材料。</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <label for="courseSelect" class="sr-only">选择课程</label>
+                    <select id="courseSelect" name="courseSelect" class="py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                        <option value="soil_waste" selected>土壤与固体废物监测 (王老师)</option>
+                        <option value="air_pollution">大气污染控制 (李老师)</option>
+                        <option value="water_treatment">水处理技术 (赵老师)</option>
+                    </select>
+                </div>
+            </header>
+
+            <section class="mb-6 p-4 bg-slate-800 rounded-lg shadow">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-end">
+                    <div>
+                        <label for="searchCourseResource" class="block text-sm font-medium text-slate-300 mb-1">搜索资源</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-slate-500"></i>
+                            </div>
+                            <input type="text" id="searchCourseResource" name="searchCourseResource" class="w-full pl-10 pr-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 placeholder-slate-400 focus:ring-blue-500 focus:border-blue-500" placeholder="搜索教案、文件名...">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="resourceTypeStudent" class="block text-sm font-medium text-slate-300 mb-1">资源类型</label>
+                        <select id="resourceTypeStudent" name="resourceTypeStudent" class="w-full py-2 px-3 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">所有类型</option>
+                            <option value="lesson_plan">教案</option>
+                            <option value="document">文档</option>
+                            <option value="image">图片</option>
+                            <option value="video_link">视频</option>
+                            <option value="pre_study">预习任务</option>
+                        </select>
+                    </div>
+                     <button class="bg-slate-600 hover:bg-slate-500 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center h-10">
+                        <i class="fas fa-filter mr-2"></i> 应用筛选
+                    </button>
+                </div>
+            </section>
+
+            <div class="mb-6 border-b border-slate-700">
+                <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                    <a href="#" id="tabLessonPlans" class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-blue-500 text-blue-400" aria-current="page">
+                        <i class="fas fa-chalkboard-teacher mr-1.5"></i> 教案与课件 (12)
+                    </a>
+                    <a href="#" id="tabOtherResources" class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-400">
+                        <i class="fas fa-paperclip mr-1.5"></i> 其他参考资料 (25)
+                    </a>
+                    <a href="#" id="tabPreStudyTasks" class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-400">
+                        <i class="fas fa-tasks mr-1.5"></i> 预习任务 (3)
+                    </a>
+                </nav>
+            </div>
+            
+            <div id="resourceContentArea">
+                <section id="lessonPlansView" class="space-y-4">
+                    <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-5 md:p-6">
+                            <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                                <h4 class="text-lg font-semibold text-slate-100 mb-1 sm:mb-0">第3章：土壤重金属污染与监测方法</h4>
+                                <span class="text-xs text-slate-400">发布于: 2025-05-15</span>
+                            </div>
+                            <p class="text-sm text-slate-300 mb-3 leading-relaxed">本章主要介绍土壤中常见重金属污染物的来源、特性及其主要的监测技术和国家标准。包含多个案例分析。</p>
+                            <div class="mb-3">
+                                <span class="text-xs font-medium text-slate-400 mr-2">包含资源:</span>
+                                <span class="inline-block bg-slate-700 text-slate-300 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full"><i class="far fa-file-pdf text-red-400 mr-1"></i> GB15618-2018.pdf</span>
+                                <span class="inline-block bg-slate-700 text-slate-300 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full"><i class="far fa-image text-green-400 mr-1"></i> 采样点示意图.jpg</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-md flex items-center">
+                                    <i class="fas fa-eye mr-2"></i> 查看教案详情
+                                </button>
+                                <button class="bg-slate-600 hover:bg-slate-500 text-slate-200 text-sm font-medium py-2 px-3 rounded-md flex items-center" title="下载教案及所有附件 (ZIP)">
+                                    <i class="fas fa-download mr-2"></i> 打包下载
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden">
+                         <div class="p-5 md:p-6">
+                            <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                                <h4 class="text-lg font-semibold text-slate-100 mb-1 sm:mb-0">实验课：土壤pH值测定规范</h4>
+                                <span class="text-xs text-slate-400">发布于: 2025-04-28</span>
+                            </div>
+                            <p class="text-sm text-slate-300 mb-3 leading-relaxed">本教案详细介绍了土壤pH值测定的标准操作流程、注意事项及数据处理方法。包含预习视频和思考题。</p>
+                             <div class="mb-3">
+                                <span class="text-xs font-medium text-slate-400 mr-2">包含资源:</span>
+                                <span class="inline-block bg-slate-700 text-slate-300 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full"><i class="fas fa-video text-blue-400 mr-1"></i> 操作视频.mp4</span>
+                                <span class="inline-block bg-slate-700 text-slate-300 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full"><i class="far fa-file-alt text-yellow-400 mr-1"></i> 预习问答.docx</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-md flex items-center">
+                                    <i class="fas fa-eye mr-2"></i> 查看教案详情
+                                </button>
+                                <button class="bg-slate-600 hover:bg-slate-500 text-slate-200 text-sm font-medium py-2 px-3 rounded-md flex items-center" title="下载教案及所有附件 (ZIP)">
+                                    <i class="fas fa-download mr-2"></i> 打包下载
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+
+                <section id="otherResourcesView" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+                        <div class="h-32 bg-slate-700 flex items-center justify-center">
+                            <i class="far fa-file-pdf fa-3x text-red-500"></i>
+                        </div>
+                        <div class="p-4 flex-grow">
+                            <h4 class="font-semibold text-slate-100 text-sm truncate mb-1" title="生活垃圾焚烧发电技术详解.pdf">生活垃圾焚烧发电技术详解.pdf</h4>
+                            <p class="text-xs text-slate-400 mb-1">文档 (PDF) <span class="mx-1">|</span> 3.1 MB</p>
+                            <p class="text-xs text-slate-500">发布于: 2025-05-12</p>
+                        </div>
+                        <div class="p-2 bg-slate-700 border-t border-slate-600 flex items-center justify-end">
+                            <button class="text-blue-400 hover:text-blue-300 text-xs py-1 px-2 rounded-md flex items-center" title="下载">
+                                <i class="fas fa-download mr-1"></i> 下载
+                            </button>
+                        </div>
+                    </div>
+                     <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1590001009162-a0854ee3ab3c?q=80&w=400&h=250&auto=format&fit=crop" alt="土壤分层采样示意图" class="w-full h-32 object-cover">
+                        <div class="p-4 flex-grow">
+                            <h4 class="font-semibold text-slate-100 text-sm truncate mb-1" title="土壤分层采样示意图">土壤分层采样示意图.jpg</h4>
+                            <p class="text-xs text-slate-400 mb-1">图片 (JPG) <span class="mx-1">|</span> 850 KB</p>
+                            <p class="text-xs text-slate-500">发布于: 2025-04-02</p>
+                        </div>
+                        <div class="p-2 bg-slate-700 border-t border-slate-600 flex items-center justify-end">
+                            <button class="text-blue-400 hover:text-blue-300 text-xs py-1 px-2 rounded-md flex items-center" title="下载">
+                                <i class="fas fa-download mr-1"></i> 下载
+                            </button>
+                        </div>
+                    </div>
+                    </section>
+                
+                <section id="preStudyTasksView" class="hidden space-y-4">
+                    <div class="bg-slate-800 rounded-lg shadow-lg p-5 md:p-6">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                            <h4 class="text-lg font-semibold text-slate-100 mb-1 sm:mb-0">预习：第三章内容及思考题</h4>
+                             <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-yellow-500 text-slate-900">待完成</span>
+                        </div>
+                        <p class="text-sm text-slate-300 mb-1">关联教案: 第3章：土壤重金属污染与监测方法</p>
+                        <p class="text-sm text-slate-400 mb-3">请同学们预习课本P56-P78，并思考教案中提出的问题。截止日期: <span class="font-medium text-red-400">2025-05-20</span></p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-md flex items-center">
+                                <i class="fas fa-book-open mr-2"></i> 查看关联教案
+                            </a>
+                            <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 px-3 rounded-md flex items-center">
+                                <i class="fas fa-check-circle mr-2"></i> 标记为已完成
+                            </button>
+                        </div>
+                    </div>
+                     <div class="bg-slate-800 rounded-lg shadow-lg p-5 md:p-6 opacity-75">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                            <h4 class="text-lg font-semibold text-slate-100 mb-1 sm:mb-0">预习：实验操作规范视频观看</h4>
+                             <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-green-600 text-white">已完成</span>
+                        </div>
+                        <p class="text-sm text-slate-300 mb-1">关联教案: 实验课：土壤pH值测定规范</p>
+                        <p class="text-sm text-slate-400 mb-3">请观看实验操作视频，熟悉步骤和安全事项。截止日期: 2025-04-27</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="#" class="bg-slate-600 hover:bg-slate-500 text-slate-200 text-sm font-medium py-2 px-4 rounded-md flex items-center">
+                                <i class="fas fa-redo mr-2"></i> 重新查看
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+            <nav class="mt-8 flex items-center justify-between border-t border-slate-700 pt-6" aria-label="Pagination">
+                <div class="hidden sm:block">
+                    <p class="text-sm text-slate-400">
+                        显示第 <span class="font-medium">1</span> 到 <span class="font-medium">5</span> 条，共 <span class="font-medium">12</span> 条教案
+                    </p>
+                </div>
+                <div class="flex-1 flex justify-between sm:justify-end space-x-2">
+                    <a href="#" class="relative inline-flex items-center px-3 py-2 rounded-md border border-slate-600 bg-slate-700 text-sm font-medium text-slate-300 hover:bg-slate-600 opacity-50 cursor-not-allowed">
+                        <i class="fas fa-chevron-left mr-2 text-xs"></i> 上一页
+                    </a>
+                    <a href="#" class="relative inline-flex items-center px-3 py-2 rounded-md border border-slate-600 bg-slate-700 text-sm font-medium text-slate-300 hover:bg-slate-600">
+                        下一页 <i class="fas fa-chevron-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </nav>
+
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = [
+                { id: 'tabLessonPlans', viewId: 'lessonPlansView' },
+                { id: 'tabOtherResources', viewId: 'otherResourcesView' },
+                { id: 'tabPreStudyTasks', viewId: 'preStudyTasksView' }
+            ];
+            const defaultTab = tabs[0];
+
+            function setActiveTab(selectedTabId) {
+                tabs.forEach(tab => {
+                    const tabElement = document.getElementById(tab.id);
+                    const viewElement = document.getElementById(tab.viewId);
+                    if (tab.id === selectedTabId) {
+                        tabElement.classList.remove('border-transparent', 'text-slate-400', 'hover:text-slate-200', 'hover:border-slate-400');
+                        tabElement.classList.add('border-blue-500', 'text-blue-400');
+                        tabElement.setAttribute('aria-current', 'page');
+                        viewElement.classList.remove('hidden');
+                    } else {
+                        tabElement.classList.remove('border-blue-500', 'text-blue-400');
+                        tabElement.classList.add('border-transparent', 'text-slate-400', 'hover:text-slate-200', 'hover:border-slate-400');
+                        tabElement.removeAttribute('aria-current');
+                        viewElement.classList.add('hidden');
+                    }
+                });
+            }
+
+            tabs.forEach(tab => {
+                document.getElementById(tab.id).addEventListener('click', (event) => {
+                    event.preventDefault();
+                    setActiveTab(tab.id);
+                });
+            });
+
+            // Set default active tab
+            setActiveTab(defaultTab.id);
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
